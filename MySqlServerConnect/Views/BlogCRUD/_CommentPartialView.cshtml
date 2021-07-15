@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<BlogAppUser> SignInManager
+@model CommentViewModel
+
+
+@{
+    var postId = ViewData["Hope"];
+}
+<section>
+    <div class="container-fluid">
+
+        
+
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <form method="post" asp-action="BlogRead">
+                <div class="form-group row justify-content-center text-center mt-3 mb-0">
+                    <div class="col-8">
+                        <input asp-for="PostsPostId" hidden value="@postId" class="form-control" />
+                        <input asp-for="Subject" class="form-control" placeholder="Summarize Your Thoughts(This Section Required)" />
+                        <span asp-validation-for="Subject" class="text-danger"></span>
+                        <textarea asp-for="Text" class="form-control" rows="5" placeholder="Post A Comment"></textarea>
+                        <span asp-validation-for="Text" class="text-danger"></span>
+                        <input asp-for="IsSubcomment" hidden class="form-control" />
+                        <input asp-for="CommentsCommentId" hidden class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row justify-content-center border-bottom mt-0">
+                    <div class="col-8 mt-3 mb-4">
+                        <input type="submit" value="Submit" class="btn btn-lg btn-primary w-100" />
+                    </div>
+                </div>
+            </form>
+        }
+        else
+        {
+
+            <div class="container-fluid ">
+                <div class="row justify-content-center text-center">
+                    <div class="col-10">
+                        <h2>
+                            Please <a class="nav-link" asp-controller="Register" asp-action="Login">Log-In</a> Or
+                            <a class="nav-link" asp-controller="Register" asp-action="Register">Register</a> To Comment!
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+
+
+</section>

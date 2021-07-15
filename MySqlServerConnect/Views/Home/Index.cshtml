@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<section>
+    <div id="pic1" class="container-fluid">
+
+        <div class="row">
+
+
+            <img src="~/SentimentalWarmheartedFlee-size_restricted.gif" class="w-100 h-100">
+            <div class="container-fluid position-absolute align-self-center text-center">
+                <h1 class="text-capitalize" style="color: rgb(255, 255, 255); font-weight:900">
+                    Your brain controls everything you do and everything you perceive about the world around you...
+                    <a onclick='myFunction("pic2")' class="btn btn-primary btn-lg"><i class="fas fa-arrow-alt-circle-down"></i> </a>
+                </h1>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div id="pic2" class="container-fluid">
+        <div class="row">
+            <img src="~/BrainZoomIn.gif" class="w-100 h-100" />
+            <div class="container-fluid position-absolute align-self-center  text-center">
+                <h1 class="text-capitalize" style="font-weight:900">
+                    But how does it work!?...
+                    <a onclick='myFunction("pic3")' class="btn btn-primary btn-lg"><i class="fas fa-arrow-alt-circle-down"></i></a>
+
+                </h1>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section>
+    <div id="pic3" class="container-fluid">
+        <div class="row">
+            <img src="~/BrainZoomInMore.gif" class="w-100 h-100" />
+            <div class="container-fluid position-absolute align-self-center text-center">
+                <a class="btn btn-primary btn-lg text-capitalize font-weight-bolder" style="font-size: 2rem" MainBlog" asp-controller="MainBlog" asp-action="BlogMainPage">Click here to find out now!</a>
+                <a onclick='myFunction("pic1")' class="btn btn-primary btn-lg"><i class="fas fa-arrow-alt-circle-up"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+

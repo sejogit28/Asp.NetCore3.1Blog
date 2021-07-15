@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-MySqlServerConnect-AD9F66A5-13BB-4B3A-841D-F08FE350618F</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20201107001317_ChangedPostTableBloguUserIdName.cs" />
+    <Compile Remove="Migrations\20201107001317_ChangedPostTableBloguUserIdName.Designer.cs" />
+    <Compile Remove="Migrations\20201107004959_UpdatedPostsTable.cs" />
+    <Compile Remove="Migrations\20201107004959_UpdatedPostsTable.Designer.cs" />
+    <Compile Remove="Migrations\20201107005142_UpdatedPostsTable.cs" />
+    <Compile Remove="Migrations\20201107005142_UpdatedPostsTable.Designer.cs" />
+    <Compile Remove="Migrations\20201107011304_temporary.cs" />
+    <Compile Remove="Migrations\20201107011304_temporary.Designer.cs" />
+    <Compile Remove="Migrations\20201109010258_ChangedDatePropertiesFromStringToDateTime.cs" />
+    <Compile Remove="Migrations\20201109010258_ChangedDatePropertiesFromStringToDateTime.Designer.cs" />
+    <Compile Remove="Migrations\20201109041232_AddedSubcomments.cs" />
+    <Compile Remove="Migrations\20201109041232_AddedSubcomments.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JavaScriptEngineSwitcher.Extensions.MsDependencyInjection" Version="3.3.0" />
+    <PackageReference Include="JavaScriptEngineSwitcher.V8" Version="3.9.0" />
+    <PackageReference Include="JavaScriptEngineSwitcher.V8.Native.win-x64" Version="3.9.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.3" />
+    <PackageReference Include="React.AspNet" Version="5.2.11" />
+  </ItemGroup>
+
+</Project>

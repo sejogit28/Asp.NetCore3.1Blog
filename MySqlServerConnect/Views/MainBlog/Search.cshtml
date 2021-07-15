@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MySqlServerConnect.Models.Posts>
+@{
+    ViewData["Title"] = "Search";
+}
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <div class="row mb-2">
+                <div class="col-12">
+                    <h1 class="text-left">@ViewData["Title"]</h1>
+                </div>
+            </div>
+
+            <form asp-controller="MainBlog" asp-action="Search">
+                <div class="form-row mb-4">
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <input type="text" id="searchPosts" name="searchTitle" class="form-control" placeholder="Type a few keywords to narrow down your choices">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">Submit</button>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="row">
+                @foreach (var P in Model)
+                {
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                        <div class="card shadow" style="margin-bottom: 10%">
+                            <img class="card-img-top" src=@Html.Raw(P.ImageURL) alt="card image">
+                            <div class="card-body">
+                                <h2 class="card-title">@P.Title </h2>
+                                <p class="card-text">@P.Summary</p>
+                                <a class="btn btn-lg btn-primary mr-4" asp-route-Id="@P.PostId" asp-controller="BlogCRUD" asp-action="BlogRead">View</a>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+

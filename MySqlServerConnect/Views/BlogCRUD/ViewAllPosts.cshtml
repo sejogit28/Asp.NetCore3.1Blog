@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MySqlServerConnect.Models.Posts>
+@{
+    ViewData["Title"] = "ViewAllPosts";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            @if (Model.Count() > 0)
+            {
+                <div class="row my-3">
+                    <div class="col">
+                        <a class="btn btn-lg btn-primary " asp-controller="BlogCRUD" asp-action="BlogCreate">
+                            Write a New Post!
+                        </a>
+                    </div>
+                </div>
+                foreach (var P in Model)
+                {
+                    <div class="row">
+                        <div class="col">
+                            <div class="card my-3">
+                                <div class="card-header font-weight-bolder">
+                                    Post Title: @P.Title
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title">@P.Summary</h3>
+                                </div>
+                                <div class="card-header">
+                                    <a class="btn btn-lg btn-primary mr-4" asp-route-Id="@P.PostId" asp-controller="BlogCRUD" asp-action="BlogRead">View</a>
+                                    <a class="btn btn-lg btn-warning mr-4" asp-route-Id="@P.PostId" asp-controller="BlogCRUD" asp-action="BlogUpdate">Edit</a>
+                                    <a class="btn btn-lg btn-danger" asp-route-Id="@P.PostId" asp-controller="BlogCRUD" asp-action="BlogDelete">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+            }
+
+            else
+            {
+                <div class="card">
+                    <div class="card-header display-4 font-weight-bolder">
+                        No Posts Yet!!
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Write Something By Clicking Below
+                        </h5>
+                        <a class="btn btn-lg btn-primary " asp-controller="BlogCRUD" asp-action="BlogCreate">
+                            Write a New Post!
+                        </a>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,106 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model EditUserViewModel
+@inject SignInManager<BlogAppUser> SignInManager
+@inject UserManager<BlogAppUser> UserManager
+
+@{
+    ViewData["Title"] = "EditUserProfile";
+}
+
+
+
+<div class="container border mt-4 px-4">
+    <div class="row">
+        <div class="col-6">
+            <form method="post" asp-action="EditUserInfo">
+                <div class="m-2  p-2 col">
+                    <h2 class="text-info">
+                        Profile Info
+                    </h2>
+                </div>
+
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="FullName"></label>
+                    </div>
+                    <div class="col-8">
+                        <input class="form-control" asp-for="FullName" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="LoginName"></label>
+                    </div>
+                    <div class="col-8">
+                        <input class="form-control" asp-for="LoginName" />
+                        <span asp-validation-for="LoginName" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Email"></label>
+                    </div>
+                    <div class="col-8">
+                        <input class="form-control" asp-for="Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="ConfirmEmail"></label>
+                    </div>
+                    <div class="col-8">
+                        <input class="form-control" asp-for="ConfirmEmail" />
+                        <span asp-validation-for="ConfirmEmail" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="DateJoined"></label>
+                    </div>
+                    <div class="col-8">
+                        <input class="form-control" asp-for="DateJoined" />
+                        <span asp-validation-for="DateJoined" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="col-12 mb-4">
+                    <div class="row align-self-center">
+                        <div class="col-6">
+                            <input type="submit" value="Submit" class="btn btn-lg btn-primary w-100" />
+                        </div>
+                        <div class="col-6">
+                            <a asp-controller="Administrative" asp-action="ViewUserProfile" class="btn btn-lg btn-warning w-100">Go Back</a>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <div class="row justify-content-center">
+                <div class="col-6 mb-4">
+                    <form method="post" asp-action="DeleteUser">
+                        <button type="submit" class="btn btn-lg btn-danger w-100">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,142 @@
+﻿
+@model MySqlServerConnect.Models.Posts
+@{
+    ViewData["Title"] = "BlogRead";
+}
+
+
+
+
+<article>
+    <div class="container-fluid mt-4">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col">
+                        <h1>@Html.Raw(Model.Title)</h1>
+                    </div>
+                </div>
+                <div class="row  mt-2">
+                    <div class="col">
+                        <h5>@Html.Raw(Model.Summary)</h5>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-3">
+                        <h6>@Html.Raw(Model.AuthorName)</h6>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-4">
+                        <h6>Posted: @Html.Raw(Model.DatePosted)</h6>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col">
+                        <p> @Html.Raw(Model.Text)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center text-center border-top">
+            <div class="col-8">
+                <h2 class="font-weight-bolder">What do you think?</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center text-center border-bottom">
+            <div class="col-8">
+                <h6 class="font-weight-bolder">Discuss the articles contents or your own thoughts below</h6>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+@{
+    await Html.RenderPartialAsync("_CommentPartialView", new CommentViewModel { PostsPostId = Model.PostId, IsSubcomment = false });
+
+}
+
+
+@{/*
+    var postId = ViewData["Hope"];
+    var hope = Convert.ToInt32(postId); This was previously used to get specidic comments using an if clause in the 
+    foreach loop below, however, a better method was found through EF Core
+
+*/}
+
+@{int count = 0; }
+
+@foreach (var comm in Model.Comments)
+
+{
+
+    var commId = comm.CommentId; //This is used to help the else clasue below get the right value
+
+    
+
+    if (comm.IsSubcomment == false)
+    {
+
+
+        <div class="container mt-3">
+            <div class="media border pt-2">
+                <img src="https://cdn.pixabay.com/photo/2016/08/31/11/54/user-1633249_1280.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                <div class="media-body">
+                    <h4>@comm.Commentor <small><i>Posted on: @comm.DateCreated</i></small></h4><h3>@comm.Subject</h3>
+                    <p class="mt-3">@comm.Text</p>
+                    <!--  <div class="d-flex flex-row-reverse align-text-bottom mr-2 mb-2">
+                              <input class="btn btn-info"  value="Reply" onclick="addRow()" />
+                           </div> -->
+                </div>
+                
+            </div>
+            
+        </div>
+       
+        <div class='@(count+ "cssSubComm")'  style="display:none"> <!--This line has varying classnames and the default style component(none) that hides the Reply comment form-->
+           @{ await Html.RenderPartialAsync("_CommentPartialView", new CommentViewModel { PostsPostId = Model.PostId, CommentsCommentId = comm.CommentId, IsSubcomment = true });
+           }
+        </div>
+    }
+   /*
+        else if(comm.IsSubcomment == true && comm.CommentId == commId)
+
+        {
+                <div class="container mt-3">
+                    <div class="media border pt-2 ml-5">
+                        <img src="https://cdn.pixabay.com/photo/2016/08/31/11/54/user-1633249_1280.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                        <div class="media-body">
+                            <h4>@comm.Commentor <small><i>Posted on: @comm.DateCreated</i></small></h4><h3>@comm.Subject</h3>
+                            <p class="mt-3">@comm.Text</p>                 
+                        </div>
+                    </div>
+                </div>
+        } */
+     
+<script>
+
+    function hide(id) {
+        document.getElementById(id).style.display = "none";
+    }
+
+    function addRow() {
+        var x = document.getElementsByClassName('@(count+ "cssSubComm")'); //This quotes were necessary for this to work
+        for (i = 0; i < x.length; i++) {
+        if (x[i].style.display === "none") {
+            x[i].style.display = "block";
+        }
+        else {
+            x[i].style.display = "none";
+        }
+        }
+    }
+
+
+</script>
+                   count++; // This iterates the variable so the className changes with every comment
+               }
+
+
+
+
